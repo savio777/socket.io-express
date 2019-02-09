@@ -1,5 +1,7 @@
+// https://www.youtube.com/watch?v=qZUDuBcbJ9A
+
 // carregar modulos do servidor e criar servidor
-const express = require('express')()
+const express = require('express')
 const app = express()
 const http = require('http').createServer(app)
 
@@ -11,7 +13,11 @@ app.get('/', (req, res) => {
     res.sendFile(__dirname + '/index.html')
 })
 
+io.on('connect', (socket) => {
+    console.log('nova conexão~> ' + socket)
+})
+
 // escutar servidor para receber feedback
 http.listen(3000, () => {
-    console.log('servidor rodando em localhost:3000')
+    console.log('servidor rodando em~> localhost:3000')
 })
